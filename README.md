@@ -45,7 +45,7 @@ Required package:
    Maximum number of the coordinates.
 
 # HisToGene pipeline
-See tutorial.ipynb
+See [tutorial.ipynb](tutorial.ipynb)
 
 # References
 
