@@ -18,7 +18,7 @@ model = SpatialTransformer(
 # flatten_patches: [N, 3*W*H]
 # coordinates: [N, 2]
 
-pred_expression = SpatialTransformer(flatten_patches, coordinates)  # [N, n_genes]
+pred_expression = model(flatten_patches, coordinates)  # [N, n_genes]
 
 ```
 
