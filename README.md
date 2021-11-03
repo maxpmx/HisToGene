@@ -1,4 +1,4 @@
-# A spatial transformer model to predict high-resolution geneexpression from histology images in tumors
+# A spatial transformer model to predict high-resolution gene expression from histology images in tumors
 
 # Usage
 ```python
