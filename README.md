@@ -3,9 +3,9 @@
 # Usage
 ```python
 import torch
-from vis_model import SpatialTransformer
+from vis_model import HisToGene
 
-model = SpatialTransformer(
+model = HisToGene(
     n_genes=1000, 
     patch_size=112, 
     n_layers=4, 
