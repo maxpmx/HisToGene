@@ -141,7 +141,7 @@ class STModel(pl.LightningModule):
         return parser
 
 
-class SpatialTransformer(pl.LightningModule):
+class HisToGene(pl.LightningModule):
     def __init__(self, patch_size=112, n_layers=4, n_genes=1000, dim=1024, learning_rate=1e-4, dropout=0.1, n_pos=64):
         super().__init__()
         # self.save_hyperparameters()
@@ -202,7 +202,7 @@ def count_parameters(model):
 if __name__ == '__main__':
     a = torch.rand(1,4000,3*112*112)
     p = torch.ones(1,4000,2).long()
-    model = SpatialTransformer()
+    model = HisToGene()
     print(count_parameters(model))
     x = model(a,p)
     print(x.shape)
