@@ -303,28 +303,29 @@ class ViT_HER2ST(torch.utils.data.Dataset):
 
         if self.sr:
             centers = torch.LongTensor(centers)
-            n_raw = len(centers)
-            shift_x, shift_y = 150, 150
-            for i in range(n_raw):
-                x, y = positions[i]
-                pix_x, pix_y = centers[i]
-                # if x<34 and y<34:
-                new_pos = torch.LongTensor([[x+1,y],[x,y+1],[x+1,y+1]])
-                new_cts = torch.LongTensor([[pix_x+shift_x,pix_y],[pix_x,pix_y+shift_y],[pix_x+shift_x,pix_y+shift_y]])
-                positions = torch.cat((positions,new_pos),dim=0)
-                centers = torch.cat((centers,new_cts),dim=0)
+            max_x = centers[:,0].max().item()
+            max_y = centers[:,1].max().item()
+            min_x = centers[:,0].min().item()
+            min_y = centers[:,1].min().item()
+            r_x = (max_x - min_x)//30
+            r_y = (max_y - min_y)//30
 
-            n_raw = len(centers)
-            shift_x, shift_y = 150//2, 150//2
-            for i in range(n_raw):
-                x, y = positions[i]
-                pix_x, pix_y = centers[i]
-                # if x<34 and y<34:
-                new_pos = torch.LongTensor([[x,y],[x,y],[x,y]])
-                new_cts = torch.LongTensor([[pix_x+shift_x,pix_y],[pix_x,pix_y+shift_y],[pix_x+shift_x,pix_y+shift_y]])
-                positions = torch.cat((positions,new_pos),dim=0)
-                centers = torch.cat((centers,new_cts),dim=0)
+            centers = torch.LongTensor([min_x,min_y]).view(1,-1)
+            positions = torch.LongTensor([0,0]).view(1,-1)
+            x = min_x
+            y = min_y
+
+            while y < max_y:  
+                x = min_x            
+                while x < max_x:
+                    centers = torch.cat((centers,torch.LongTensor([x,y]).view(1,-1)),dim=0)
+                    positions = torch.cat((positions,torch.LongTensor([x//r_x,y//r_y]).view(1,-1)),dim=0)
+                    x += 56                
+                y += 56
             
+            centers = centers[1:,:]
+            positions = positions[1:,:]
+
             n_patches = len(centers)
             patches = torch.zeros((n_patches,patch_dim))
             for i in range(n_patches):
@@ -516,39 +517,29 @@ class ViT_SKIN(torch.utils.data.Dataset):
 
         if self.sr:
             centers = torch.LongTensor(centers)
-            n_raw = len(centers)
-            shift_x, shift_y = 180, 100
-            for i in range(n_raw):
-                x, y = positions[i]
-                pix_x, pix_y = centers[i]
-                # if x<60 and y<63:
-                new_pos = torch.LongTensor([[x+1,y],[x,y+1],[x+1,y+1]])
-                new_cts = torch.LongTensor([[pix_x+shift_x,pix_y],[pix_x,pix_y+shift_y],[pix_x+shift_x,pix_y+shift_y]])
-                positions = torch.cat((positions,new_pos),dim=0)
-                centers = torch.cat((centers,new_cts),dim=0)
+            max_x = centers[:,0].max().item()
+            max_y = centers[:,1].max().item()
+            min_x = centers[:,0].min().item()
+            min_y = centers[:,1].min().item()
+            r_x = (max_x - min_x)//30
+            r_y = (max_y - min_y)//30
 
-            n_raw = len(centers)
-            shift_x, shift_y = shift_x//2, shift_y//2
-            for i in range(n_raw):
-                x, y = positions[i]
-                pix_x, pix_y = centers[i]
-                # if x<60 and y<63:
-                new_pos = torch.LongTensor([[x,y]])
-                new_cts = torch.LongTensor([[pix_x+shift_x,pix_y]])
-                positions = torch.cat((positions,new_pos),dim=0)
-                centers = torch.cat((centers,new_cts),dim=0)
+            centers = torch.LongTensor([min_x,min_y]).view(1,-1)
+            positions = torch.LongTensor([0,0]).view(1,-1)
+            x = min_x
+            y = min_y
 
-            n_raw = len(centers)
-            shift_x, shift_y = 45, 45
-            for i in range(n_raw):
-                x, y = positions[i]
-                pix_x, pix_y = centers[i]
-                # if x<60 and y<63:
-                new_pos = torch.LongTensor([[x,y],[x,y],[x,y]])
-                new_cts = torch.LongTensor([[pix_x+shift_x,pix_y],[pix_x,pix_y+shift_y],[pix_x+shift_x,pix_y+shift_y]])
-                positions = torch.cat((positions,new_pos),dim=0)
-                centers = torch.cat((centers,new_cts),dim=0)
+            while y < max_y:  
+                x = min_x            
+                while x < max_x:
+                    centers = torch.cat((centers,torch.LongTensor([x,y]).view(1,-1)),dim=0)
+                    positions = torch.cat((positions,torch.LongTensor([x//r_x,y//r_y]).view(1,-1)),dim=0)
+                    x += 56                
+                y += 56
             
+            centers = centers[1:,:]
+            positions = positions[1:,:]
+
             n_patches = len(centers)
             patches = torch.zeros((n_patches,patch_dim))
             for i in range(n_patches):
