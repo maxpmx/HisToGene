@@ -1,4 +1,4 @@
-# HisToGene: a vision transformer model to predict super-resolution gene expression from histology images in tumors
+# Leveraging information in spatial transcriptomics to predict super-resolution gene expression from histology images in tumors
 
 # Usage
 ```python
