@@ -1,4 +1,6 @@
 # Leveraging information in spatial transcriptomics to predict super-resolution gene expression from histology images in tumors
+## Minxing Pang, Kenong Su, Mingyao Li
+
 <img src="Workflow.PNG" width="800px"></img>
 # Usage
 ```python
