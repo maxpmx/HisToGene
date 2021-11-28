@@ -27,7 +27,7 @@ pred_expression = model(flatten_patches, coordinates)  # [N, n_genes]
 ## System environment
 Required package:
 - PyTorch >= 1.8
-- pytorch-lightening >= 1.4
+- pytorch-lightning >= 1.4
 - scanpy >= 1.8
 
 ## Parameters
