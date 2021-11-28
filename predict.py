@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
 from utils import *
-from vis_model import SpatialTransformer
+from vis_model import HisToGene
 import warnings
 from dataset import ViT_HER2ST, ViT_SKIN
 from tqdm import tqdm
