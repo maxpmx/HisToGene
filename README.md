@@ -1,5 +1,5 @@
 # Leveraging information in spatial transcriptomics to predict super-resolution gene expression from histology images in tumors
-
+<img src="Workflow.png" width="800px"></img>
 # Usage
 ```python
 import torch
