@@ -50,4 +50,4 @@ Required package:
 See [tutorial.ipynb](tutorial.ipynb)
 
 # References
-
+https://github.com/almaan/her2st
