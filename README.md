@@ -1,6 +1,6 @@
 # Leveraging information in spatial transcriptomics to predict super-resolution gene expression from histology images in tumors
 ### Minxing Pang, Kenong Su*, Mingyao Li*
-HisToGene is a deep learning method that predicts super-resolution gene expression from histology images in tumors. Trained in a spatial transcriptomics dataset, HisToGene models the spatial dependency in gene expression and histological features among spots through a modified Vision Transformer model. [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2021.11.28.470212v1)
+HisToGene is a deep learning method that predicts super-resolution gene expression from histology images in tumors. Trained in a spatial transcriptomics dataset, HisToGene models the spatial dependency in gene expression and histological features among spots through a modified Vision Transformer model. [[bioRxiv]](https://doi.org/10.1101/2021.11.28.470212)
 <img src="Workflow.PNG" width="800px"></img>
 # Usage
 ```python
